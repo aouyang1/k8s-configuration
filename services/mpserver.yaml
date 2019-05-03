@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mpserver
+  labels:
+    name: mpserver
+spec:
+  ports:
+    - port: 8081
+  selector:
+    app: mpserver

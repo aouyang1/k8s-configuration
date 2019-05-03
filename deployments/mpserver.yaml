@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mpserver
+  labels:
+    app: mpserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mpserver
+  template:
+    metadata:
+      labels:
+        app: mpserver
+    spec:
+      containers:
+      - name: mpserver
+        image: aouyang1/mpserver:latest
+        ports:
+        - containerPort: 8081
+        env:
+        - name: REDIS_URL
+          value: "redis:6379"
+        - name: PORT
+          value: "8081"
+        - name: GIN_MODE
+          value: "release"
+
