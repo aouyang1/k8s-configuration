@@ -30,3 +30,7 @@ spec:
         backend:
           serviceName: mpfrontend
           servicePort: 8080
+      - path: /api/v1
+        backend:
+          serviceName: mpserver
+          servicePort: 8081
