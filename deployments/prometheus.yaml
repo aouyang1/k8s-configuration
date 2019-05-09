@@ -23,6 +23,10 @@ spec:
         - "--storage.tsdb.retention=8760h"
         - "--web.route-prefix=/prometheus"
         - "--web.external-url=http://localhost/prometheus"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
         ports:
         - containerPort: 9090
           protocol: TCP

@@ -23,6 +23,10 @@ spec:
         image: aouyang1/mpserver:latest
         ports:
         - containerPort: 8081
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
         env:
         - name: REDIS_URL
           value: "redis:6379"
