@@ -20,17 +20,30 @@ spec:
       containers:
       - name: redis
         image: redis:alpine
+        command:
+        - redis-server
+        - "/redis-master/redis.conf"
         ports:
         - containerPort: 6379
         resources:
           requests:
-            cpu: 100m
-            memory: 100Mi
+            cpu: 500m
+            memory: 500Mi
+        volumeMounts:
+        - mountPath: /redis-master
+          name: config
       - name: redis-exporter
-        image: oliver006/redis_exporter:latest
+        image: oliver006/redis_exporter:v0.34.1-alpine
         resources:
           requests:
-            cpu: 100m
-            memory: 100Mi
+            cpu: 50m
+            memory: 50Mi
         ports:
         - containerPort: 9121
+      volumes:
+      - name: config
+        configMap:
+          name: mpredis-config
+          items:
+          - key: redis-config
+            path: redis.conf
