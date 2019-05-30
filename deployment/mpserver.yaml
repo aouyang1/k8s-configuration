@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mpserver
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: mpserver
@@ -16,7 +16,6 @@ spec:
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "8081"
-        prometheus.io/path: "/metrics"
     spec:
       containers:
       - name: mpserver
@@ -24,9 +23,12 @@ spec:
         ports:
         - containerPort: 8081
         resources:
+          limits:
+            cpu: 1000m
+            memory: 500Mi
           requests:
-            cpu: 100m
-            memory: 100Mi
+            cpu: 250m
+            memory: 250Mi
         env:
         - name: REDIS_URL
           value: "redis:6379"
