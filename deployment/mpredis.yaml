@@ -27,8 +27,8 @@ spec:
         - containerPort: 6379
         resources:
           requests:
-            cpu: 500m
-            memory: 500Mi
+            cpu: 400m
+            memory: 400Mi
         volumeMounts:
         - mountPath: /redis-master
           name: config
