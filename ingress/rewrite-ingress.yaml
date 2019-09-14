@@ -2,12 +2,14 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: nginx-rewrite-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - host: grafana.austin-ouyang.com
     http:
       paths:
-      - path: /
+      - path: /grafana
         backend:
           serviceName: grafana
           servicePort: 80

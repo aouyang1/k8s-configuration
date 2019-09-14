@@ -4,6 +4,6 @@ metadata:
   name: mpredis-config
 data:
   redis-config: |
-    maxmemory 300mb
+    maxmemory 900mb
     maxmemory-policy volatile-ttl
     tcp-keepalive 0
