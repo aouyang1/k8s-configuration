@@ -9,17 +9,9 @@ metadata:
 spec:
   tls:
   - hosts:
-    - www.austin-ouyang.com
     - ui.matrixprofile.org
     secretName: austin-ouyang-tls
   rules:
-  - host: www.austin-ouyang.com
-    http:
-      paths:
-      - path: /prometheus
-        backend:
-          serviceName: prometheus
-          servicePort: 80
   - host: ui.matrixprofile.org
     http:
       paths:
